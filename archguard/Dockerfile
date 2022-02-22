@@ -7,7 +7,6 @@ RUN yarn install
 COPY . .
 RUN npx browserslist@latest --update-db
 RUN export NODE_OPTIONS=--max_old_space_size=8192 && yarn build
-CMD ["yarn", "run"]
 
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
